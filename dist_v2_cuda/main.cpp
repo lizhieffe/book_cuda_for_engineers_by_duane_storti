@@ -1,16 +1,20 @@
-#include <iostream>
 #include <stdlib.h>  // dynamic memory management
 
-#include "aux_functions.h"
+#include "kernel.h"
 
 #define N 200000000
 
+float scale(int i, int n) {
+  return ((float)i)/(n-1);
+}
+
 int main() {
+  const float ref = 0.5f;
+
   float *in = (float*)calloc(N, sizeof(float));
   float *out = (float*)calloc(N, sizeof(float));
-  float ref = 0.5f;
 
-  for (int i = 0; i < N; ++i) {
+  for (int i = 0; i < N; i++) {
     in[i] = scale(i, N);
   }
 
@@ -20,4 +24,3 @@ int main() {
   free(out);
   return 0;
 }
-
